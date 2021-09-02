@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.test.dao.memberMapper">
+
+	 <!-- 회원가입 -->
+	 <insert id="join" parameterType="Member">
+	  	insert into
+	  		project_member
+	  	values(
+	  		#{id}
+	  		,#{password}
+	  		,#{name}
+	  		,#{birth}
+	  		,#{gender}
+	  		,#{phone}	  		
+	  	)
+	 </insert>
+	 
+	 <!-- 로그인 -->
+	 <select id="login" parameterType="Member" resultType="String">
+	 	select
+	 		id
+	 	from
+	 		project_member
+	 	where
+	 		id = #{id}
+	 		and
+	 		password = #{password}
+	 </select>
+	 
+	 <!-- id 중복체크 -->
+	 <select id="idChk" resultType="String">
+	 	select
+	 		id
+	 	from
+	 		project_member
+	 	where
+	 		id = #{id}
+	 </select>
+	 
+	 
+</mapper>
